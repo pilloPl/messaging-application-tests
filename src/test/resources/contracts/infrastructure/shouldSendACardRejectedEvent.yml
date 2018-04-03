@@ -1,0 +1,23 @@
+#86010156812
+label: some_label
+name: some name
+ignored: true
+input:
+  triggeredBy: sendRejected()
+outputMessage:
+  sentTo: channel
+  headers:
+    contentType: application/json
+  body:
+    clientPesel: 86010156812
+    timestamp: 2018-01-01'T'12:12:12.000
+    type: card-application-rejected
+  assertThat: baz()
+  matchers:
+    body:
+      - path: $.clientPesel
+        predefined: by_regex
+        value: bar
+      - path: $.foo3
+        type: by_command
+        value: executeMe($it)
